@@ -15,7 +15,7 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             try {
                 int userInput = scanner.nextInt();
-                switch (userInput){
+                switch (userInput) {
                     case 1:
                         saveNoteService.saveNote(createNote());
                         break;
@@ -25,29 +25,40 @@ public class Main {
                     default:
                         showError("Выберите вариант из списка!");
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 showError("Введите число!");
             }
         }
 
 
     }
-    private static  Note createNote (){
+
+    /**
+     * пользовательский интерфейс создания заметки
+     *
+     * @return - заметку
+     */
+    private static Note createNote() {
         System.out.println("\nСоздание заметки\n------------------------------------");
         System.out.print("Введите текст заметки:\t");
         Scanner scanner = new Scanner(System.in);
         String noteText = scanner.nextLine();
         System.out.println("\nСоздание заметки\n------------------------------------");
-        return  new Note(noteText);
+        return new Note(noteText);
 
     }
 
+    /**
+     * отобразить пользователю сообщение об ошибке
+     *
+     * @param message - текст сообщения
+     */
     private static void showError(String message) {
-        message = "Ошибка!!! "+message;
+        message = "Ошибка!!! " + message;
         for (int i = 0; i < message.length(); i++) {
             System.out.print("=");
         }
-        System.out.println("\n"+message);
+        System.out.println("\n" + message);
         for (int i = 0; i < message.length(); i++) {
             System.out.print("=");
         }

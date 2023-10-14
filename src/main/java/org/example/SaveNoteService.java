@@ -16,7 +16,13 @@ public class SaveNoteService {
         noteCounter = getCurrentQuantity();
     }
 
-    public  boolean saveNote(Note note)  {
+    /**
+     * сохранение заметки в файл
+     *
+     * @param note - заметка
+     * @return true -> сохранение прошло успешно / false -> возникла ошибка
+     */
+    public boolean saveNote(Note note) {
         note.setId(++noteCounter);
         try {
             FileWriter fileWriter = new FileWriter(new File(fileName), true);
@@ -31,15 +37,20 @@ public class SaveNoteService {
         return true;
     }
 
+    /**
+     * посчитать количество заметок в файле(все заметки однострочные)
+     *
+     * @return -  количество заметок
+     */
     private int getCurrentQuantity() {
         File file = new File(fileName);
-        if (file.length()==0){
-            return  0;
+        if (file.length() == 0) {
+            return 0;
         }
-        int counter=0;
+        int counter = 0;
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            while(bufferedReader.readLine()!=null){
+            while (bufferedReader.readLine() != null) {
                 counter++;
             }
         } catch (Exception e) {

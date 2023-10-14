@@ -1,7 +1,6 @@
 package org.example;
 
 
-
 import java.util.Date;
 
 //@Data
@@ -9,7 +8,8 @@ public class Note {
     private Long id;
     private String text;
     private Date dateOfCreate;
-    Note(String text){
+
+    Note(String text) {
         dateOfCreate = new Date();
         this.text = text;
     }
